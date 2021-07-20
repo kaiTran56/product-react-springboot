@@ -120,9 +120,6 @@ class BookList extends Component {
                     console.log(res);
                     this.setState({
                         books: res.listResult,
-
-
-
                     });
                 })
                 .catch(err => console.log(err));

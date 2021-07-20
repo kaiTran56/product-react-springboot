@@ -17,7 +17,7 @@ class Book extends Component {
         title: "",
         content: "",
         price: 0,
-        image: '',
+        listImage: [],
         category: ''
     }
 
@@ -40,7 +40,7 @@ class Book extends Component {
                 title: "",
                 content: "",
                 price: 0,
-                image: '',
+                listImage: [],
                 category: ''
             });
         }
@@ -73,7 +73,8 @@ class Book extends Component {
                     title: book.title,
                     content: book.content,
                     price: book.price,
-                    category: book.category
+                    category: book.category,
+                    listImage: book.listImage
                 });
             }
 
@@ -104,15 +105,17 @@ class Book extends Component {
     //redux 
     onClick = () => {
 
-        let { title, content, price, category } = this.state;
+        let { title, content, price, category, listImage } = this.state;
         if (title && content && category) {
             const book = {
 
                 title: title,
                 content: content,
                 price: price,
-                category: category
+                category: category,
+                listImage: [listImage]
             }
+            console.log(book);
 
             this.props.saveBook(book);
 
@@ -150,7 +153,8 @@ class Book extends Component {
             title: this.state.title,
             content: this.state.content,
             price: this.state.price,
-            category: this.state.category
+            category: this.state.category,
+            listImage: [this.state.listImage]
         }
 
         this.props.updateBook(book);
@@ -171,7 +175,7 @@ class Book extends Component {
 
     handleKey = event => {
         this.setState({
-            image: event.target.value
+            listImage: event.target.value
         });
     }
 
@@ -236,12 +240,12 @@ class Book extends Component {
 
                             <div class="input-group input-group-lg">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-lg"><img src={this.state.image} roundedRight
+                                    <span class="input-group-text" id="inputGroup-sizing-lg"><img src={this.state.listImage} roundedRight
                                         width="40"
                                         height="38" /></span>
                                 </div>
-                                <input type="text" class="form-control" name="image" value={this.state.image}
-                                    onChange={this.handleKey} aria-label="Large" aria-describedby="inputGroup-sizing-sm" required />
+                                <input type="text" class="form-control" name="listImage" value={this.state.listImage}
+                                    onChange={this.onChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" required />
                             </div>
 
                             <div className="col-md-6">
