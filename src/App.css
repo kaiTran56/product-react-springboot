@@ -28,6 +28,33 @@
   color: #61dafb;
 }
 
+.margin-top {
+  margin-top: 20px;
+}
+
+.position-Toast {
+  min-height: 20px;
+  min-width: 10px;
+}
+
+.position-Toast-size {
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  box-shadow: forestgreen;
+}
+
+.background-toast{
+  background-color: forestgreen;
+}
+
+.resize-image{
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

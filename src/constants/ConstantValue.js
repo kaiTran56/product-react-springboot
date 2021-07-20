@@ -1,0 +1,1 @@
+export const NO_TOPIC = "No Topic";
