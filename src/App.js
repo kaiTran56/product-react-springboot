@@ -6,8 +6,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from "./components/product/Book";
 import BookList from "./components/product/BookList";
 import CategoryList from "./components/category/CategoryList";
+import CKNote from "./components/ckeditor/CKNote";
 import * as typesBook from "./constants/UrlBookConstant";
 import * as typesCategory from "./constants/UrlCategoryConstant";
+import * as typesUrlRest from "./constants/UrlRest";
 
 export default class App extends Component {
   render() {
@@ -22,6 +24,7 @@ export default class App extends Component {
             <Route path={typesBook.URL_EDIT_BOOK} exact component={Book} />
             <Route path={typesBook.URL_LIST_BOOK} exact component={BookList} />
             <Route path={typesCategory.URL_LIST_CATEGORY} exact component={CategoryList} />
+            <Route path={typesUrlRest.TEST_CKEDITOR} exact component={CKNote}/>
           </Switch>
         </div>
 

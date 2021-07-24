@@ -55,6 +55,10 @@
   object-fit: cover;
 }
 
+.ck-editor__editable {
+  min-height: 300px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

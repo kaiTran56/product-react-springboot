@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as typesBook from "../constants/UrlBookConstant";
 import * as typesCategory from "../constants/UrlCategoryConstant";
+import * as typesUrlRest from "../constants/UrlRest";
 
 export default class NavigationBar extends Component {
     render() {
@@ -12,10 +13,10 @@ export default class NavigationBar extends Component {
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-
+                    
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        
+
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Book
@@ -36,11 +37,14 @@ export default class NavigationBar extends Component {
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                 <Link to={typesCategory.URL_LIST_CATEGORY} className="dropdown-item">List Category</Link>
-                               
+
                                 <div className="dropdown-divider"></div>
                                 <a className="dropdown-item" >Here</a>
                             </div>
                         </li>
+
+                        <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">List Book</Link>
+
 
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
