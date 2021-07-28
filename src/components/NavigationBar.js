@@ -43,7 +43,7 @@ export default class NavigationBar extends Component {
                             </div>
                         </li>
 
-                        <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">List Book</Link>
+                        <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">Test Text Editor</Link>
 
 
                     </ul>
