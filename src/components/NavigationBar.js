@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as typesBook from "../constants/UrlBookConstant";
 import * as typesCategory from "../constants/UrlCategoryConstant";
 import * as typesUrlRest from "../constants/UrlRest";
+import * as typesUrlNews from "../constants/UrlNews";
 
 export default class NavigationBar extends Component {
     render() {
@@ -43,9 +44,22 @@ export default class NavigationBar extends Component {
                             </div>
                         </li>
 
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                News
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">                                
+                                <Link to={typesUrlNews.URL_NEWS} className="dropdown-item" >List News</Link>
+                                <Link to={typesUrlNews.URL_ADD_NEWS} className="dropdown-item">Add News</Link>
+                                <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" >Here</a>
+                            </div>
+                        </li>
+
+
                         <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">Test Text Editor</Link>
 
-
+                       
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>

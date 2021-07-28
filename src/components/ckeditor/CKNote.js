@@ -55,7 +55,6 @@ class CKNote extends Component {
 
     // onChangeHandler = event => {
     //     console.log(event.target.files[0]);
-
     //     this.setState({
     //         selectedFile: event.target.files[0],
     //         loaded: 0,

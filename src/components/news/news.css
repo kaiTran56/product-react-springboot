@@ -1,0 +1,18 @@
+.set-size-img {
+  width: 90px;
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.set-size-img-large {
+  width: 200px;
+  height: 200px;
+}
+
+.ck-editor__editable {
+  min-height: 300px;
+}
+.content{
+  word-wrap: break-word;
+  white-space:pre-wrap;
+}
