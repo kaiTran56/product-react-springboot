@@ -13,11 +13,11 @@ class AddFormNews extends Component {
         super(props);
         this.state = this.initialState;
         this.state.tags = [];
-        this.state.imageUri = '';        
+        this.state.imageUri = '';
         this.state.editorState = this.initialContentEditor(this.state.content);
     }
 
-    initialContentEditor =(content)=>{
+    initialContentEditor = (content) => {
         const contentBlock = htmlToDraft(content);
         const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
         const editorState = EditorState.createWithContent(contentState);
@@ -35,7 +35,32 @@ class AddFormNews extends Component {
         description: '',
         thumbnail: '',
         content: "<p>Hello World</p>",
+        topic: '',
         tagList: []
+    }
+
+    findNewsByIds = (id) => {
+        axios.get("" + id)
+            .then(response => response.data)
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    id: res.id,
+                    createdDate: res.createdDate,
+                    modifiedDate: res.modifiedDate,
+                    createdBy: res.createdBy,
+                    modifiedBy: res.modifiedBy,
+                    title: res.title,
+                    description: res.description,
+                    thumbnail: res.thumbnail,
+                    content: res.content,
+                    tagList: res.tagListTemp,
+                    topic: res.topic
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     onKeyDown = event => {
@@ -87,6 +112,7 @@ class AddFormNews extends Component {
     }
 
     saveNews = () => {
+
         let { id,
             createdDate,
             modifiedDate,
@@ -97,6 +123,9 @@ class AddFormNews extends Component {
             thumbnail,
             content,
             tagList } = this.state;
+
+        const tagListTemp = tagList.map(x => '<span class="badge badge-primary">' + x + '</span>')
+
         const newsObj = {
             id: id,
             createdDate: createdDate,
@@ -107,7 +136,7 @@ class AddFormNews extends Component {
             description: "<i>" + description + "</i>",
             thumbnail: thumbnail,
             content: content,
-            tagList: tagList,
+            tagList: tagListTemp,
             topic: 'tranquyet'
         }
 
@@ -118,6 +147,12 @@ class AddFormNews extends Component {
             .catch(err => {
             })
 
+        this.setState(this.initialState);
+        this.setState({ tags: [] });
+        this.onContentStateChange();
+    }
+
+    onClear = () => {
         this.setState(this.initialState);
         this.setState({ tags: [] });
         this.onContentStateChange();
@@ -163,7 +198,7 @@ class AddFormNews extends Component {
                         <form onSubmit={this.onSubmit}>
                             <div class="row">
                                 <div class="col-3 text-center">
-                                    <img src={this.state.imageUri} className="set-size-img-large img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="" />
+                                    <img src={id ? thumbnail : this.state.imageUri} className="set-size-img-large img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="" />
                                 </div>
                                 <div class="col-9">
                                     <div class="cols-12">
@@ -180,16 +215,16 @@ class AddFormNews extends Component {
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="">Created Date</span>
                                             </div>
-                                            <input type="text" name="createdDate" class="form-control" value={createdDate} />
+                                            <input type="text" name="createdDate" class="form-control" value={createdDate} disabled />
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="">Modified Date</span>
                                             </div>
-                                            <input type="text" name="modifiedDate" class="form-control" value={modifiedDate} />
+                                            <input type="text" name="modifiedDate" class="form-control" value={modifiedDate} disabled />
                                         </div>
                                     </div>
                                     <hr />
                                     <div class="cols-12">
-                                        <div class="input-group mb-3">
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Upload</span>
                                             </div>
@@ -197,7 +232,16 @@ class AddFormNews extends Component {
                                                 <input type="file" name="" onChange={this.onChangeImage} class="custom-file-input" id="inputGroupFile01" />
                                                 <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
                                             </div>
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Topic: </label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect01" name="topic" onChange={this.onChange} required>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
                                         </div>
+
                                     </div>
                                     <hr />
                                     <div class="cols-12">
@@ -217,7 +261,7 @@ class AddFormNews extends Component {
                                         editorState={editorState}
                                         wrapperClassName="demo-wrapper"
                                         editorClassName="demo-editor"
-                                       onEditorStateChange={this.onEditorStateChange}
+                                        onEditorStateChange={this.onEditorStateChange}
                                     />
                                 </div>
                             </div>
@@ -241,7 +285,7 @@ class AddFormNews extends Component {
                             <div>
                                 <button type="button" class="btn btn-success" onClick={this.saveNews}>Save</button>
                                 {' '}
-                                <button type="button" class="btn btn-info">Clear</button>
+                                <button type="button" class="btn btn-info" onClick={this.onClear}>Clear</button>
                             </div>
                         </form>
                     </div>

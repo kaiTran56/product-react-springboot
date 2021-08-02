@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as typesBook from "../constants/UrlBookConstant";
 import * as typesCategory from "../constants/UrlCategoryConstant";
-import * as typesUrlRest from "../constants/UrlRest";
 import * as typesUrlNews from "../constants/UrlNews";
 
 export default class NavigationBar extends Component {
@@ -57,7 +56,7 @@ export default class NavigationBar extends Component {
                         </li>
 
 
-                        <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">Test Text Editor</Link>
+                        {/* <Link to={typesUrlRest.TEST_CKEDITOR} className="nav-link active">Test Text Editor</Link> */}
 
                        
                     </ul>

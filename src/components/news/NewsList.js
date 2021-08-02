@@ -14,10 +14,12 @@ class NewsList extends Component {
                         <NewsTable />
                     </div>
                     <div class="card-footer text-right">
+                        
                         Tran Quyet
                     </div>
                 </div>
             </div>
+
 
         );
     }

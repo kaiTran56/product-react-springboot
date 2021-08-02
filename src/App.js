@@ -26,9 +26,10 @@ export default class App extends Component {
             <Route path={typesBook.URL_EDIT_BOOK} exact component={Book} />
             <Route path={typesBook.URL_LIST_BOOK} exact component={BookList} />
             <Route path={typesCategory.URL_LIST_CATEGORY} exact component={CategoryList} />
-            <Route path={typesUrlRest.TEST_CKEDITOR} exact component={CKNote} />
+            {/* <Route path={typesUrlRest.TEST_CKEDITOR} exact component={CKNote} /> */}
             <Route path={typesUrlNews.URL_NEWS} exact component={NewsList} />
             <Route path={typesUrlNews.URL_ADD_NEWS} exact component={AddFormNews} />
+            <Route path={typesUrlNews.URL_EDIT_NEWS} exact component={AddFormNews} />
           </Switch>
         </div>
       </Router>

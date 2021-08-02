@@ -16,3 +16,11 @@
   word-wrap: break-word;
   white-space:pre-wrap;
 }
+
+.set-size-img-large-detail {
+  width: 750px;
+  height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
